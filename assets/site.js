@@ -4,7 +4,7 @@ const SITE = {
   whatsapp: "6285156434545",      // country code + number, no + or spaces. Example: 6281234567890
   instagram: "homerunlearning.mdo",  // your Instagram handle without @
   city: "Manado, Sulawesi Utara",
-  waText: { id: "Halo miss 🤗 Saya ingin tanya tentang les HomeRun untuk anak saya.", en: "Hello miss 🤗 I'd like to ask about HomeRun tutoring for my child." }
+  waText: { id: "Halo HomeRun Learning, saya ingin tanya tentang les untuk anak saya.", en: "Hello HomeRun Learning, I'd like to ask about tutoring for my child." }
 };
 
 /* ====== BLOG POSTS (newest first). Add a new post by copying one block. ====== */
@@ -78,8 +78,8 @@ function renderChrome(){
   const header=document.getElementById("site-header");
   if(header) header.outerHTML=`<header class="site-header"><div class="wrap nav">
     <a class="brand" href="index.html"><img class="logo-img" src="images/logo.png" alt="${SITE.name}" onerror="this.replaceWith(document.createTextNode('${SITE.name}'))"></a>
-    <button class="menu-btn" aria-label="Menu" id="menu-btn">☰</button>
-    <nav class="nav-links" id="nav-links">${links}<button class="lang" id="lang-btn" aria-label="Language">ID | EN</button></nav></div></header>`;
+    <nav class="nav-links" id="nav-links" aria-label="Menu">${links}</nav>
+    <button class="lang" id="lang-btn" aria-label="Language">ID | EN</button></div></header>`;
   const footer=document.getElementById("site-footer");
   if(footer) footer.outerHTML=`<footer class="site-footer"><div class="wrap"><div class="foot">
     <div><h4>${SITE.name}</h4><p>${T({id:"Les privat dan pendampingan belajar untuk anak di Manado.",en:"Tutoring and learning support for children in Manado."})}</p></div>
@@ -87,7 +87,7 @@ function renderChrome(){
     <div><h4>${T({id:"Hubungi Kami",en:"Get in touch"})}</h4><ul><li><a href="${wa()}" target="_blank" rel="noopener" data-wa>WhatsApp</a></li><li><a href="${ig}" target="_blank" rel="noopener">Instagram @${SITE.instagram}</a></li><li>${SITE.city}</li></ul></div>
     </div><div class="copy">© ${new Date().getFullYear()} ${SITE.name}</div></div></footer>`;
   const ic=document.createElement("link"); ic.rel="icon"; ic.href="images/logo-mark.png"; document.head.appendChild(ic);
-  document.getElementById("menu-btn")?.addEventListener("click",()=>document.getElementById("nav-links").classList.toggle("open"));
+  document.querySelector("#nav-links a.active")?.scrollIntoView({inline:"center",block:"nearest"});
   document.getElementById("lang-btn")?.addEventListener("click",()=>{
     const n=L()==="id"?"en":"id"; document.documentElement.lang=n; try{localStorage.setItem("lang",n);}catch(e){}
     refreshLinks();
@@ -123,4 +123,6 @@ function renderPost(){
    <div class="cta-band" style="margin-top:40px"><h3 style="color:#fff">${T({id:"Ingin pendampingan untuk anak Anda?",en:"Want support for your child?"})}</h3>
    <div class="btn-row"><a class="btn btn-wa" data-wa target="_blank" rel="noopener">${T({id:"Chat via WhatsApp",en:"Chat on WhatsApp"})}</a></div></div>`;
 }
-document.addEventListener("DOMContentLoaded",()=>{ renderChrome(); renderBlog(); renderPost(); renderPhotos(); refreshLinks(); });
+document.addEventListener("DOMContentLoaded",()=>{ renderChrome(); renderBlog(); renderPost(); renderPhotos(); refreshLinks();
+  if(document.querySelector("[data-quiz]")){ const s=document.createElement("script"); s.src="assets/quiz.js"; document.body.appendChild(s); }
+});
