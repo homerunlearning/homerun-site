@@ -77,7 +77,7 @@ function renderChrome(){
   const links=NAV.map(([h,t])=>`<a href="${h}" class="${h===page?"active":""}">${T(t)}</a>`).join("");
   const header=document.getElementById("site-header");
   if(header) header.outerHTML=`<header class="site-header"><div class="wrap nav">
-    <a class="brand" href="index.html"><span class="mark" id="logo-mark">H</span>${SITE.name}</a>
+    <a class="brand" href="index.html"><img class="logo-img" src="images/logo.png" alt="${SITE.name}" onerror="this.replaceWith(document.createTextNode('${SITE.name}'))"></a>
     <button class="menu-btn" aria-label="Menu" id="menu-btn">☰</button>
     <nav class="nav-links" id="nav-links">${links}<button class="lang" id="lang-btn" aria-label="Language">ID | EN</button></nav></div></header>`;
   const footer=document.getElementById("site-footer");
@@ -86,7 +86,7 @@ function renderChrome(){
     <div><h4>${T({id:"Menu",en:"Menu"})}</h4><ul>${NAV.map(([h,t])=>`<li><a href="${h}">${T(t)}</a></li>`).join("")}</ul></div>
     <div><h4>${T({id:"Hubungi Kami",en:"Get in touch"})}</h4><ul><li><a href="${wa()}" target="_blank" rel="noopener" data-wa>WhatsApp</a></li><li><a href="${ig}" target="_blank" rel="noopener">Instagram @${SITE.instagram}</a></li><li>${SITE.city}</li></ul></div>
     </div><div class="copy">© ${new Date().getFullYear()} ${SITE.name}</div></div></footer>`;
-  const logo=new Image(); logo.onload=()=>{const m=document.getElementById("logo-mark"); if(m){m.textContent=""; m.appendChild(logo);}}; logo.src="images/logo.png";
+  const ic=document.createElement("link"); ic.rel="icon"; ic.href="images/logo-mark.png"; document.head.appendChild(ic);
   document.getElementById("menu-btn")?.addEventListener("click",()=>document.getElementById("nav-links").classList.toggle("open"));
   document.getElementById("lang-btn")?.addEventListener("click",()=>{
     const n=L()==="id"?"en":"id"; document.documentElement.lang=n; try{localStorage.setItem("lang",n);}catch(e){}
