@@ -1,10 +1,10 @@
 /* ====== EDIT THESE FIRST ====== */
 const SITE = {
   name: "HomeRun Learning",
-  whatsapp: "62XXXXXXXXXX",      // country code + number, no + or spaces. Example: 6281234567890
-  instagram: "homerunlearning",  // your Instagram handle without @
+  whatsapp: "6285156434545",      // country code + number, no + or spaces. Example: 6281234567890
+  instagram: "homerunlearning.mdo",  // your Instagram handle without @
   city: "Manado, Sulawesi Utara",
-  waText: { id: "Halo HomeRun Learning, saya ingin tanya tentang les untuk anak saya.", en: "Hello HomeRun Learning, I'd like to ask about tutoring for my child." }
+  waText: { id: "Halo miss ☺️ Saya ingin tanya tentang les HomeRun untuk anak saya.", en: "Hello miss ☺️ I'd like to ask about HomeRun tutoring for my child." }
 };
 
 /* ====== BLOG POSTS (newest first). Add a new post by copying one block. ====== */
